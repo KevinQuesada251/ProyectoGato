@@ -12,7 +12,8 @@ const jugador = document.getElementById("jugador")
 const iA = document.getElementById("iA")
 const lista = [casilla_1,casilla_2,casilla_3,casilla_4,casilla_5,casilla_6,casilla_7,casilla_8,casilla_9]
 let hayGanador = false
-let victoriasX = 0 
+let victoriasX = localStorage.getItem("victoriasX")
+jugador.innerHTML = localStorage.getItem("victoriasX")
 let victoriasO = 0
 let cantMovs = 0
 /*
