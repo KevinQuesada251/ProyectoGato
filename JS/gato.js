@@ -11,7 +11,10 @@ const btnReiniciar = document.getElementById("btnReiniciar")
 const jugador = document.getElementById("jugador")
 const iA = document.getElementById("iA")
 const lista = [casilla_1,casilla_2,casilla_3,casilla_4,casilla_5,casilla_6,casilla_7,casilla_8,casilla_9]
-
+let hayGanador = false
+let victoriasX = 0 
+let victoriasO = 0
+let cantMovs = 0
 /*
     Va a referenciar TODAS las casillas, y va a agruparlas de manera global en el código
     para luego usar una función y darles el evento que dibuje la X
@@ -20,10 +23,17 @@ const lista = [casilla_1,casilla_2,casilla_3,casilla_4,casilla_5,casilla_6,casil
 function marcarCasillas() {                                              /*/*recorre cada posicion de la lista y le un evento de click y una funcion con una condicion que evalua si lo que esta insertado en la posicion de la lista es un espacio vacio y que cumpla la funcion elegirGanador*/ 
     lista.forEach((item)=>item.addEventListener("click",function(){      //cuando entra al if inserta una X cuando hace clic en una posicion de la lista, despues evalua ejecuta la funcion de la supuesta IA que coloca un circulo y finalmente evalua quien gano
         if (item.innerHTML === "" && !elegirGanador()) {                 //crear una variable para guardar la lista con un filtro de las posiciones vacias
-            let turnos = 0
             item.innerHTML = "X" 
-            setTimeout(marcaCirculo,600)     
+            cantMovs++
             elegirGanador()
+            console.log(cantMovs);
+            if(!hayGanador){
+                setTimeout(()=>{
+                    marcaCirculo()
+                },300)     
+            }
+            
+            
         }
     }))
 }
@@ -31,8 +41,9 @@ function marcarCasillas() {                                              /*/*rec
 function marcaCirculo() {                                                             //crear una variable para guardar la lista con un filtro de las posiciones vacias
     const casillasVacias = lista.filter(vacia=> vacia.innerHTML == "")                 //crea una variable para guardar un numero aleatorio del tamaño de la lista de las posiciones vacias
     const posicionAleatoria = Math.floor(Math.random() * casillasVacias.length);       //y que en la casillasVacias ponga en la posicion aleatoria un O
-
+    cantMovs++
     casillasVacias[posicionAleatoria].innerHTML="O"
+    elegirGanador()
 }
 
 function elegirGanador(){
@@ -46,24 +57,37 @@ function elegirGanador(){
         let [pos1,pos2,pos3] = iterar                                        // y despues lo comparo el contenido de la lista y las posiciones ganadoras para si lista es diferente de un
         if (lista[pos1].textContent != "" &&                                 // espacio vacio y despues comparo si la primera posicion es igual a las demás y si eso se cumple que muestre una
             lista[pos1].textContent === lista[pos2].textContent &&           // una alerta de quien fue el ganador y me devuelva el valor de verdadero
-            lista[pos1].textContent === lista[pos3].textContent) {
-            alert(`El ganador es: ${lista[pos1].textContent}`)
-            if (lista[pos1].textContent === lista[pos2] && lista[pos1] === lista[pos3]) {
-                let personaPuntaje = document.createElement("h2")
-                jugador.appendChild(personaPuntaje.innerText = "hola") 
-                console.log("gano");
+            lista[pos1].textContent === lista[pos3].textContent) 
+            {
+            if (lista[pos1].textContent === "X") {
+                // let personaPuntaje = document.createElement("h2")
+                // jugador.appendChild(personaPuntaje.innerText = "hola") 
+                console.log("La X lleva " + victoriasX + " victoria");
+                victoriasX++
+                hayGanador = true
+                localStorage.setItem("victoriasX", JSON.stringify(victoriasX))
+                let mostrarVictoriasX = JSON.parse(localStorage.getItem("victoriasX"))
+                jugador.innerHTML = mostrarVictoriasX
+                console.log(jugador);
                 
                 
-            } else {
-                let personaPuntaje = document.createElement("h2")
-                personaPuntaje.innerHTML = turno
-                turno++
-                jugador.appendChild(personaPuntaje) 
-                console.log("gano");
-                
-            }    //hacer un contador y en esta parte preguntar quien gano
-            return true 
+                return   
+            }   //hacer un contador y en esta parte preguntar quien gano
+            else if(lista[pos1].textContent === "O"){
+                victoriasO++
+                console.log("La O lleva " + victoriasO + " victoria");
+                hayGanador = true
+                localStorage.setItem("victoriasO",JSON.stringify(victoriasO))
+                let mostrarVictoriasO = JSON.parse(localStorage.getItem("victoriasO"))
+                iA.innerHTML = mostrarVictoriasO
+
+                return   
+            }
+        }else if(cantMovs===9 && !hayGanador){
+            console.log("Empate");
+            
         }
+        hayGanador = false
     }   
 }
 
@@ -71,6 +95,7 @@ function reinicio() {
     btnReiniciar.addEventListener("click",function () {
        lista.forEach(item => {
         item.innerHTML= ""
+        cantMovs=0
        }); 
     })
 }
