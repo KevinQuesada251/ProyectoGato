@@ -1,17 +1,30 @@
 body{
-    background-color: bisque;
+    background-color: black;
+
+}
+#mainContainer{
+    display: grid;
+    grid-auto-columns: 1fr 0.5fr;
+    width: 100%;
+    
 }
 .container{
+    width: 13%;
     display: grid;
+    grid-column-start: 1;
+    grid-row-start: 3;
     grid-template-columns: 80px 80px 80px;
+    position: relative;
+    left: 60%;
+
 }
 .celda{
     width: 100%;
     height: 80px;
     display: grid;
-    border: 2px solid black;
+    border: 2px solid white;
     background-color: yellow;
-    color: black;
+    color: #FF2400;
     font-size: 60px;
     text-align: center;
     animation: cambioColor2 3s infinite;
@@ -20,40 +33,107 @@ body{
     background-color: chartreuse;
     
 }
+#anuncioGanador{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+
+}
 #btnReiniciar{
-    padding: 10px;
+    width: 100px;
+    height: 20px;
+    display: grid;
+    grid-column-start: 1;
     border-radius: 10px;
     background-color: red;
     color: white;
     font-weight: bolder;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    left: 68%;
+    top: 15px;
 }
 #btnReiniciar:hover{
     padding: 12px;
     color: chartreuse;
     background-color: grey;
 }
+header{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
 h1{
     text-align: center;
 }
-.contador{
-    width: 100%;
-    height: 100px;
+#contador{
+    width: 208px;
+    height: auto;
     display: grid;
+    grid-column: 2;
+    grid-row-start: 3;
     grid-template-columns: 100px 100px;
-    background-color: gray;
+    background-color: rgb(78, 78, 78);
+    border-radius: 10px;
+    gap: 5px;
+    border: 1px white solid;
+    color: white;
 }
 h3{
+    width: 100%;
+    display: grid;
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: -1;
+    text-align: center;
 }
-.jugador{
+#jugador{
+    width: 100%;
+    display: grid;
     grid-column-start: 1;
-    grid-row-start: 1;
+    grid-row-start: 3;
+    text-align: center;
+    color: blue;
+
 }
-.iA{
+#iA{
+    width: 100%;
+    display: grid;
+    grid-column-start: 2;
+    grid-row-start: 3;
+    text-align: center;
+    color: #FF2400;
+
+}
+#nombreJugador{
+    width: 100%;
+    display: grid;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    text-align: center;
+    border: 1px solid white;
+}
+#nombreMaquina{
+    width: 100%;
+    display: grid;
     grid-column-start: 2;
     grid-row-start: 2;
+    text-align: center;
+    border: 1px solid white;
+}
+#reiniciarMarcador{
+    width: 64px;
+    height: 64px;
+    position: relative;
+    left: 68px;
+}
+#reiniciarMarcador:hover{
+    height: 75px;
+}
+h2{
+    text-align: center;
+    background-color: rgb(238, 238, 18);
+    border-radius: 80%;
 }
 .tituloRojo{
     color: red;
@@ -69,11 +149,11 @@ h3{
 }
 
 @keyframes cambioColor2 {
-    0%   {background-color:white; left:0px; top:0px;}
-    25%  {background-color:orangered; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:green; left:0px; top:200px;}
-    100% {background-color:white; left:0px; top:0px;}
+    0%   {background-color:#9B4DFF; left:0px; top:0px;}
+    25%  {background-color: #FF6F00; left:200px; top:0px;}
+    50%  {background-color:#00FFFF; left:200px; top:200px;}
+    75%  {background-color: #39FF14; left:0px; top:200px;}
+    100% {background-color:#9B4DFF; left:0px; top:0px;}
   }
 
   

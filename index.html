@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/estilos.css">
+    <link rel="stylesheet" href="CSS/estilos.css">  <!--Enlace a la hojas de estilos-->
     <title>Tic-Tac-Toe</title>
 </head>
+
 <body>
-    <header><h1><span class="tituloRojo">Tic</span>-<spa class="tituloAzul">Tac</spa>-<span class="tituloAmarillo">Toe</span></h1></header>
-    <div class="container">
-        <div class="celda" id="casilla_1"></div>
-        <div class="celda" id="casilla_2"></div>
-        <div class="celda" id="casilla_3"></div>
-        <div class="celda" id="casilla_4"></div>
-        <div class="celda" id="casilla_5"></div>
-        <div class="celda" id="casilla_6"></div>
-        <div class="celda" id="casilla_7"></div>
-        <div class="celda" id="casilla_8"></div>
-        <div class="celda" id="casilla_9"></div>
-    </div>
-    <button id="btnReiniciar">Reiniciar</button>
+    <div id="mainContainer">
+        <header>
+            <h1><span class="tituloRojo">Tic</span>-<spa class="tituloAzul">Tac</spa>-<span
+                    class="tituloAmarillo">Toe</span></h1>
+        </header>
+        <nav id="anuncioGanador"></nav>
+        <div class="container">
+            <div class="celda" id="casilla_1"></div>
+            <div class="celda" id="casilla_2"></div>
+            <div class="celda" id="casilla_3"></div>
+            <div class="celda" id="casilla_4"></div>
+            <div class="celda" id="casilla_5"></div>
+            <div class="celda" id="casilla_6"></div>
+            <div class="celda" id="casilla_7"></div>
+            <div class="celda" id="casilla_8"></div>
+            <div class="celda" id="casilla_9"></div>
+        </div>
+        <button id="btnReiniciar">Reiniciar</button>
 
-    <div id="contador">
-        <h3>Marcador</h3>
-        <div id="">Jugador</div>
-        <h2 id="jugador"></h2>
-        <div id="">IA</div>
-        <h2 id="iA"></h2>
+        <div id="contador">
+            <h3>Marcador</h3>
+            <div id="nombreJugador">Jugador</div>
+            <h2 id="jugador"></h2>
+            <div id="nombreMaquina">Maquina</div>
+            <h2 id="iA"></h2>
+            <img id="reiniciarMarcador" src="IMG/reiniciar(1).png" alt="">
+        </div>
     </div>
-
-<script src="JS/gato.js"></script>
+    <script src="JS/gato.js"></script>
 </body>
+
 </html>
